@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Çiğdem Öğretmen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --surface:#f1f7ff; --ink:#14284b; --muted:#4d6288;
+  --blue:#1f6feb; --blue-soft:#dbe9ff; --pink:#ff5fa2; --pink-soft:#ffe3ef; --line:#d3e1f7;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a33; --surface:#14234a; --ink:#eef4ff; --muted:#a9bbdd;
+    --blue:#6ea8ff; --blue-soft:#1b3266; --pink:#ff7db6; --pink-soft:#4a1f3a; --line:#26407a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a33; --surface:#14234a; --ink:#eef4ff; --muted:#a9bbdd;
+  --blue:#6ea8ff; --blue-soft:#1b3266; --pink:#ff7db6; --pink-soft:#4a1f3a; --line:#26407a;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito",system-ui,sans-serif;font-size:17px;line-height:1.65}
+h1,h2,h3{font-family:"Fredoka","Nunito",system-ui,sans-serif;font-weight:600;line-height:1.2;margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;flex-wrap:wrap}
+.brand{font-family:"Fredoka",sans-serif;font-weight:600;font-size:1.25rem;color:var(--ink);text-decoration:none}
+.brand b{color:var(--pink)}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;color:var(--ink);font-weight:700}
+nav ul a:hover{color:var(--pink)}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;padding:40px 0 64px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.2rem);color:var(--blue)}
+.hero h1 span{display:block;color:var(--pink)}
+.hero p{max-width:46ch;color:var(--muted);font-size:1.15rem;margin:18px 0 26px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--blue);background:var(--blue);color:#fff}
+.btn.alt{background:transparent;color:var(--blue)}
+.btn.alt:hover{background:var(--pink-soft);border-color:var(--pink);color:var(--pink)}
+.robot{width:100%;max-width:320px;justify-self:center}
+section{padding:56px 0}
+.tint{background:var(--surface)}
+h2{font-size:clamp(1.8rem,4.5vw,2.5rem);color:var(--blue)}
+.lead{color:var(--muted);max-width:60ch;margin:10px 0 28px}
+.weeks{display:grid;gap:12px}
+details{background:var(--bg);border:2px solid var(--line);border-radius:18px;padding:0 20px}
+details[open]{border-color:var(--pink)}
+summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;padding:16px 0;font-weight:700}
+summary::-webkit-details-marker{display:none}
+.wk{flex:none;min-width:84px;text-align:center;background:var(--blue-soft);color:var(--blue);border-radius:999px;padding:4px 12px;font-family:"Fredoka",sans-serif;font-weight:600;font-size:.95rem}
+details[open] .wk{background:var(--pink-soft);color:var(--pink)}
+summary::after{content:"+";margin-left:auto;font-size:1.6rem;color:var(--pink);line-height:1}
+details[open] summary::after{content:"−"}
+details div{padding:0 0 18px;color:var(--muted)}
+details strong{color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--bg);border:2px solid var(--line);border-radius:20px;padding:22px}
+.card:nth-child(2){border-color:var(--pink)}
+.card h3{font-size:1.3rem;color:var(--blue);margin-bottom:8px}
+.card:nth-child(2) h3{color:var(--pink)}
+.card p,.card li{color:var(--muted);margin:0}
+.card ul{margin:0;padding-left:20px}
+.note{margin-top:24px;padding:16px 20px;background:var(--pink-soft);border-radius:16px;color:var(--ink)}
+footer{padding:36px 0;border-top:2px solid var(--line);color:var(--muted);text-align:center}
+@media (max-width:720px){.hero{grid-template-columns:1fr;padding-top:16px}.robot{max-width:220px;order:-1}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Ana menü">
+    <a class="brand" href="#top">Çiğdem <b>Öğretmen</b></a>
+    <ul>
+      <li><a href="#dersler">Haftalık Dersler</a></li>
+      <li><a href="#olimpiyat">Bilim Olimpiyatları</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <div>
+      <h1>Çiğdem <span>Öğretmen</span></h1>
+      <p>mBlock ile robotik kodlama dersinin haftalık içerikleri ve Bilim Olimpiyatları hazırlık bilgileri burada. Her hafta yeni bir robot becerisi öğreniyoruz.</p>
+      <div class="btns">
+        <a class="btn" href="#dersler">Derslere git</a>
+        <a class="btn alt" href="#olimpiyat">Bilim Olimpiyatları</a>
+      </div>
+    </div>
+    <svg class="robot" viewBox="0 0 240 260" role="img" aria-label="Gülümseyen sevimli robot çizimi">
+      <line x1="120" y1="18" x2="120" y2="52" stroke="var(--blue)" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="120" cy="16" r="10" fill="var(--pink)"/>
+      <rect x="40" y="52" width="160" height="120" rx="36" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="6"/>
+      <circle cx="88" cy="100" r="16" fill="var(--bg)" stroke="var(--blue)" stroke-width="5"/>
+      <circle cx="152" cy="100" r="16" fill="var(--bg)" stroke="var(--blue)" stroke-width="5"/>
+      <circle cx="90" cy="102" r="7" fill="var(--blue)"/>
+      <circle cx="154" cy="102" r="7" fill="var(--blue)"/>
+      <path d="M92 138 Q120 160 148 138" fill="none" stroke="var(--pink)" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="62" cy="130" r="9" fill="var(--pink)" opacity=".5"/>
+      <circle cx="178" cy="130" r="9" fill="var(--pink)" opacity=".5"/>
+      <rect x="70" y="184" width="100" height="62" rx="20" fill="var(--pink-soft)" stroke="var(--pink)" stroke-width="6"/>
+      <circle cx="120" cy="215" r="10" fill="var(--blue)"/>
+    </svg>
+  </header>
+</div>
+
+<section class="tint" id="dersler">
+  <div class="wrap">
+    <h2>mBlock ile Robotik Kodlama: Haftalık Dersler</h2>
+    <p class="lead">Bir haftanın başlığına dokunarak o haftanın içeriğini açabilirsiniz.</p>
+    <div class="weeks">
+      <details open>
+        <summary><span class="wk">1. Hafta</span>Robot nedir? Algoritma ve komut</summary>
+        <div><strong>Konu:</strong> Robotların günlük hayattaki yeri, algoritma kavramı ve komut yazmanın temelleri.<br><strong>Etkinlik:</strong> Arkadaşına adım adım yön tarif et: “robot oyunu”.</div>
+      </details>
+      <details>
+        <summary><span class="wk">2. Hafta</span>Sıralı komutlar ve hareket</summary>
+        <div><strong>Konu:</strong> İleri, geri, sağa ve sola dönme komutlarını doğru sırayla kullanmak.<br><strong>Etkinlik:</strong> Robotu bir parkurda başlangıçtan bitişe götür.</div>
+      </details>
+      <details>
+        <summary><span class="wk">3. Hafta</span>Döngüler</summary>
+        <div><strong>Konu:</strong> Tekrar eden işleri tek bir döngüyle yazmak.<br><strong>Etkinlik:</strong> Robotla kare ve üçgen çizdir; kodu döngüyle kısalt.</div>
+      </details>
+      <details>
+        <summary><span class="wk">4. Hafta</span>Koşullar: eğer, değilse</summary>
+        <div><strong>Konu:</strong> Robotun bir duruma göre karar vermesi.<br><strong>Etkinlik:</strong> Engel görünce dönen, yol açıksa ilerleyen kod yaz.</div>
+      </details>
+      <details>
+        <summary><span class="wk">5. Hafta</span>Sensörler</summary>
+        <div><strong>Konu:</strong> Mesafe, ışık ve çizgi sensörleriyle robotun çevreyi algılaması.<br><strong>Etkinlik:</strong> Sensör verisini okuyup robota tepki verdir.</div>
+      </details>
+      <details>
+        <summary><span class="wk">6. Hafta</span>Değişkenler ve fonksiyonlar</summary>
+        <div><strong>Konu:</strong> Bilgi saklamak ve sık kullanılan kodu parçalara ayırmak.<br><strong>Etkinlik:</strong> Hız değişkeniyle robotun hızını ayarla.</div>
+      </details>
+      <details>
+        <summary><span class="wk">7. Hafta</span>Mini proje: engelden kaçan robot</summary>
+        <div><strong>Konu:</strong> Öğrenilen her şeyi bir projede birleştirmek.<br><strong>Etkinlik:</strong> Gruplar halinde robotu tasarla, kodla ve dene.</div>
+      </details>
+      <details>
+        <summary><span class="wk">8. Hafta</span>Proje sunumu ve değerlendirme</summary>
+        <div><strong>Konu:</strong> Projeyi sınıfa anlatmak, geri bildirim almak ve geliştirmek.<br><strong>Etkinlik:</strong> Sunum günü ve kendi kendini değerlendirme formu.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="olimpiyat">
+  <div class="wrap">
+    <h2>Bilim Olimpiyatları</h2>
+    <p class="lead">Bilim olimpiyatları, öğrencilerin matematik, fen ve bilişim gibi alanlarda bilgilerini ve problem çözme becerilerini yarıştırdığı sınavlardır.</p>
+    <div class="cards">
+      <article class="card">
+        <h3>Olimpiyat nedir?</h3>
+        <p>Okul derslerinin ötesine geçen, düşünmeyi ve merakı ödüllendiren sorulardan oluşan yarışmalardır. Amaç ezber değil, mantık yürütmektir.</p>
+      </article>
+      <article class="card">
+        <h3>Nasıl hazırlanılır?</h3>
+        <ul>
+          <li>Geçmiş yılların sorularını çözmek</li>
+          <li>Her gün kısa ve düzenli çalışmak</li>
+          <li>Yanlış cevapları nedenleriyle not etmek</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Bilişim ve kodlama bağlantısı</h3>
+        <p>Robotik kodlamada öğrendiğin algoritma, döngü ve koşul mantığı, bilişim olimpiyatı sorularının temelidir.</p>
+      </article>
+    </div>
+    <p class="note">Başvuru tarihleri ve sınav duyuruları için resmî duyuruları takip edin. Güncel bilgileri bu bölüme ekleyeceğim.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© Çiğdem Öğretmen · Bilişim Teknolojileri</div>
+</footer>
+</body>
+</html>
